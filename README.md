@@ -33,7 +33,7 @@ pip install -r requirements.txt
 ```
 
 ### 3. Launch Jupyter Notebook
-
+```bash
 jupyter notebook
 
 #### Note: All input files are located in the data/ folder of the project directory.
@@ -51,5 +51,6 @@ In the notebook menu:
 ### Output
 
 The notebook will generate plots and model evaluation results.
+
 
 
