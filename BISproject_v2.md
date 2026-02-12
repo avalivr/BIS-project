@@ -31,7 +31,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, roc_auc_score, classification_report,roc_curve, auc 
 ```
 
-Section 2. Load the data for exploratory analysis
+Section 2. Load the data for exploratory analysis -
     Load the first file and get the keys and their shape
     Go through all the data files. Each .mat file may contain EEG windows of different lengths. Check the window size for all files and choose the smallest window size.
     Use this to rebuild X and y and combine all the files.
@@ -97,6 +97,7 @@ with h5py.File(file_path, 'r') as f:
     Shape of bis: (1, 767)
     
 
+The EEG signal was provided as a continuous time series and BIS values were provided per segment.Since the total EEG length was not perfectly divisible by the number of BIS values, the EEG signal was trimmed and segmented into fixed-length windows corresponding to each BIS measurement
 
 ```python
 #choose the minimum window size since the window sizes vary as BIS might have been computed on slightly different windows
@@ -125,7 +126,6 @@ for file in files:
     y_all.append(y)
 ```
 
-The EEG signal was provided as a continuous time series and BIS values were provided per segment.Since the total EEG length was not perfectly divisible by the number of BIS values, the EEG signal was trimmed and segmented into fixed-length windows corresponding to each BIS measurement
 
 
 ```python
@@ -187,8 +187,9 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 ```
 
-Build the first classification model
-Base model: Logistic Regression
+Section 3  
+Build the first classification model  
+Model 1-a: Base model: Logistic Regression
 
 
 ```python
@@ -226,7 +227,7 @@ print(classification_report(y_test, y_pred))
 
 Although Logistic regression model achieved high accuracy (81.73%), the ROC-AUC score is 0.48, which is worse than random classification. The recall of 0.01 for the minority class indicates poor discriminative ability. this poor performance is driven by class imbalance. 
 
-Model 2: Logistic Regression with balanced class weight
+Model 1-b: Logistic Regression with balanced class weight
 
 
 ```python
@@ -272,7 +273,9 @@ print(classification_report(y_test, y_pred))
 
 Even with balanced class weight, minority class recall improved but still the ROC-AUC was <0.5
 
-Model 3: Random Forest
+Section 4: Build a second classification model
+
+Model 2-a: Random Forest
 
 
 ```python
@@ -313,7 +316,7 @@ print(classification_report(y_test, y_pred_rf))
     
     
 
-Model 4: Random Forest with class weighting
+Model 2-b: Random Forest with class weighting
 
 
 ```python
@@ -358,6 +361,7 @@ print(classification_report(y_test, y_pred_rf))
 
 Without class balancing, the Random Forest model exhibited a strong bias toward the deep anesthesia class (recall = 1.00) and performed poorly on the non-deep anesthesia class (recall = 0.03). After applying class balancing, the recall for the minority class improved to 0.10, and the macro F1-score increased from 0.48 to 0.54, indicating improved overall class balance. However, the model still demonstrated limited ability to distinguish between the two classes. This limitation may be attributed to overlapping feature distributions across classes and to the need for further feature engineering and decision-threshold optimization. These aspects can be explored in future work.
 
+Section 4 - Figures
 
 ```python
 # figures
