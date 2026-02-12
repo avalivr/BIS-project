@@ -14,8 +14,11 @@ This project contains a Jupyter Notebook for data analysis and machine learning 
 
 ## Setup and Run Instructions
 
-### 1. Download and unzip the project folder
-Download and unzip the project folder.  
+### 1. Download or clone the project
+
+```bash
+git clone <repository_url>
+cd <project_folder>
 Open a command prompt or terminal and navigate to the project directory:
 
 ```bash
@@ -33,7 +36,7 @@ pip install -r requirements.txt
 
 jupyter notebook
 
-### Input Data
+### Note: Input Data
 
 All input files are located in the data/ folder of the project directory.
 
@@ -45,8 +48,9 @@ BISproject_v2.ipynb
 
 In the notebook menu:
 
-Kernel → Restart & Run All
+  Kernel → Restart & Run All
 
 ### Output
 
 The notebook will generate plots and model evaluation results.
+
