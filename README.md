@@ -36,9 +36,7 @@ pip install -r requirements.txt
 
 jupyter notebook
 
-### Note: Input Data
-
-All input files are located in the data/ folder of the project directory.
+#### Note: All input files are located in the data/ folder of the project directory.
 
 ### 4. Open the notebook
 
@@ -53,4 +51,5 @@ In the notebook menu:
 ### Output
 
 The notebook will generate plots and model evaluation results.
+
 
